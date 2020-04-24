@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import uuid from 'uuid'
-
+import "./styles/main.css"
 const Title = () => (
     <div className="title__container">
         <h1 className="title">simple timer</h1>
