@@ -1,0 +1,55 @@
+
+.button__play {
+  /*background -image: url("play.png");*/
+  width: 100px;
+  background-color: blue;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100px;
+}
+
+.button__play--inactive {
+  display: none;
+}
+
+.button__pause--inactive {
+  display: none;
+}
+
+.button__stop {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  /*background-image: url("stop.png");*/
+}
+
+.edit__stop {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  /*background-image: url("edit.png");*/
+}
+
+.button__pause {
+  width: 100px;
+  height: 100px;
+  /*background-image: url("pause.png");*/
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: blue;
+}
+
+.timer__wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  width: 80vw;
+  margin: 0 auto;
+  background-color: cornflowerblue;
+}
