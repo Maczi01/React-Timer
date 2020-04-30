@@ -46,7 +46,6 @@ class CurrentTimebox extends React.Component {
                 return {
                     isPaused,
                     pausesCount: isPaused ? prevState.pausesCount + 1 : prevState.pausesCount
-
                 }
             }
         )
@@ -79,10 +78,10 @@ class CurrentTimebox extends React.Component {
                     <h2>{title}</h2>
                     <Clock minute={minutesLeft} second={secondsLeft}/>
                     <PauseCounter pausesCount={pausesCount}/>
-                    <button onClick={this.handleStart} disabled={isRunning} className="button__play"/>
-                    <button onClick={this.handlePause} className="button__pause"/>
-                    <button onClick={this.handleStop} disabled={!isRunning} className="button__stop"/>
-                    <button onClick={onEdit} disabled={isEditable} className="edit__stop"/>
+                    <button onClick={this.handleStart} disabled={isRunning}>Start</button>
+                    <button onClick={this.handlePause} disabled={!isRunning}>{isPaused ? "Wznów" : "Pauzuj"}</button>
+                    <button onClick={this.handleStop} disabled={!isRunning}>Stop</button>
+                    <button onClick={onEdit} disabled={isEditable}>Edytuj</button>
                 </div>
                 <ProgressBar percent={progress}/>
             </>

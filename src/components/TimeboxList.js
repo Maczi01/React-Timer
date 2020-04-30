@@ -7,11 +7,11 @@ class TimeboxList extends React.Component {
         timeboxes: [
             {
                 id: "dxgcbhjk",
-                title: "Gra na cssach",
+                title: "Zmiana koloru w css",
                 totalTimeInMinutes: "10",
             }, {
                 id: "dxgcbhsadasdasjk",
-                title: "Nauka komponentów",
+                title: "Wyśrodkowanie diva",
                 totalTimeInMinutes: "40",
             }, {
                 id: "dxgffffffcbhjk",

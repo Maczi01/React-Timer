@@ -14,7 +14,7 @@ class Timebox extends React.Component {
     }
 
     handleSubmit = (e) => {
-        e.preDefault();
+        e.preventDefault();
         this.props.onEdit(this.props.index, {
             ...this.props.timebox,
             title: this.state.title,
