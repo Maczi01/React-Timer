@@ -1,6 +1,7 @@
 import React from 'react';
 import RenderTitleAndTime from "./RenderTitleAndTime";
 import RenderEditForm from "./RenderEditForm";
+
 class Timebox extends React.Component {
     state = {
         title: this.props.title,
@@ -33,6 +34,9 @@ class Timebox extends React.Component {
     render() {
         const {title, totalTimeInMinutes, onDelete} = this.props;
         const {isEditing} = this.state;
+        if (totalTimeInMinutes <= 0) {
+            throw new Error("Niedobry czas!!!!")
+        }
         return (
             <div className="Timebox">
                 {isEditing ?

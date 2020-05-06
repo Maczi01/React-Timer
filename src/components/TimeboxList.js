@@ -1,6 +1,7 @@
 import React from 'react'
 import Timebox from "./Timebox";
 import TimeBoxCreator from "./TimeBoxCreator";
+import ErrorCatcher from "./ErrorCatcher";
 
 class TimeboxList extends React.Component {
     state = {
@@ -55,16 +56,18 @@ class TimeboxList extends React.Component {
                 <TimeBoxCreator
                     onCreate={this.handleCreate}
                 />
-                {this.state.timeboxes.map((timebox, index) =>
-                    <Timebox key={timebox.id}
-                             timebox={timebox}
-                             index={index}
-                             title={timebox.title}
-                             totalTimeInMinutes={timebox.totalTimeInMinutes}
-                             onDelete={() => this.removeTimebox(index)}
-                             onEdit={this.updateTimebox}
-                    />
-                )}
+                <ErrorCatcher message="Coś się zjebało">
+                    {this.state.timeboxes.map((timebox, index) =>
+                        <Timebox key={timebox.id}
+                                 timebox={timebox}
+                                 index={index}
+                                 title={timebox.title}
+                                 totalTimeInMinutes={timebox.totalTimeInMinutes}
+                                 onDelete={() => this.removeTimebox(index)}
+                                 onEdit={this.updateTimebox}
+                        />
+                    )}
+                </ErrorCatcher>
             </>
         )
     }

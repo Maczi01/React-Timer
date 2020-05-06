@@ -17,6 +17,7 @@ class CurrentTimebox extends React.Component {
         this.handleStop = this.handleStop.bind(this);
         this.stopCounting = this.stopCounting.bind(this);
         this.startCounting = this.startCounting.bind(this);
+        this.interval = null;
     }
 
     componentWillUnmount() {
@@ -34,15 +35,18 @@ class CurrentTimebox extends React.Component {
     }
 
     startCounting() {
-        this.interval = window.setInterval((() => {
-            this.setState(
-                (prevState) =>
-                    ({elapsedTime: prevState.elapsedTime + 1}))
-        }), 1000)
+        if (this.interval === null) {
+            this.interval = window.setInterval((() => {
+                this.setState(
+                    (prevState) =>
+                        ({elapsedTime: prevState.elapsedTime + 1}))
+            }), 1000)
+        }
     }
 
     stopCounting() {
         window.clearInterval(this.interval)
+        this.interval = null;
     }
 
     handlePause() {
