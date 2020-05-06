@@ -19,8 +19,6 @@ class TimeBoxCreator extends React.Component {
             title: this.state.title,
             totalTimeInMinutes: this.state.totalTimeInMinutes
         });
-        // this.state.title = ""
-        // this.state.totalTimeInMinutes = ""
     }
 
 

@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function ProgressBar({percent = 20}) {
     return (
         <div className="progress">
@@ -8,5 +7,7 @@ function ProgressBar({percent = 20}) {
         </div>
     )
 }
+
+
 
 export default ProgressBar;

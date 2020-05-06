@@ -2,6 +2,7 @@ import React from "react";
 import PauseCounter from "./PauseCounter";
 import ProgressBar from "./ProgressBar";
 import Clock from "./Clock";
+import {getTimeInMinutesAndSeconds} from '../lib/time'
 
 class CurrentTimebox extends React.Component {
     constructor(props) {
@@ -79,8 +80,7 @@ class CurrentTimebox extends React.Component {
         let playVisible = "button__play"
         const totalTimeInSeconds = totalTimeInMinutes * 60;
         const timeToLeftInSeconds = totalTimeInSeconds - elapsedTime;
-        const minutesLeft = Math.floor(timeToLeftInSeconds / 60);
-        const secondsLeft = Math.floor(timeToLeftInSeconds % 60);
+        const [minutesLeft, secondsLeft] = getTimeInMinutesAndSeconds(totalTimeInSeconds)
         const progress = (timeToLeftInSeconds / totalTimeInSeconds) * 100;
         if (timeToLeftInSeconds === 0) this.stopCounting();
         return (
