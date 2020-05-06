@@ -19,6 +19,13 @@ class CurrentTimebox extends React.Component {
         this.startCounting = this.startCounting.bind(this);
     }
 
+    componentWillUnmount() {
+        console.log("kaczka")
+        console.count("component will unmount")
+        this.stopCounting()
+    }
+
+
     handleStart() {
         this.setState({
             isRunning: true
