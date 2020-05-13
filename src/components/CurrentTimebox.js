@@ -80,7 +80,7 @@ class CurrentTimebox extends React.Component {
         let playVisible = "button__play"
         const totalTimeInSeconds = totalTimeInMinutes * 60;
         const timeToLeftInSeconds = totalTimeInSeconds - elapsedTime;
-        const [minutesLeft, secondsLeft] = getTimeInMinutesAndSeconds(totalTimeInSeconds)
+        const [minutesLeft, secondsLeft] = getTimeInMinutesAndSeconds(timeToLeftInSeconds)
         const progress = (timeToLeftInSeconds / totalTimeInSeconds) * 100;
         if (timeToLeftInSeconds === 0) this.stopCounting();
         return (
