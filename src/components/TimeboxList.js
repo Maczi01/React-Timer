@@ -42,7 +42,6 @@ class TimeboxList extends React.Component {
     };
 
     updateTimebox = (updatedTimebox) => {
-        console.log(updatedTimebox)
         this.setState(prevState => {
             const newState = {
                 timeboxes: [
@@ -50,7 +49,6 @@ class TimeboxList extends React.Component {
                         timebox.id === updatedTimebox.id ? updatedTimebox : timebox
                     )]
             }
-            console.log("to" + newState.timeboxes)
             return newState;
         });
     }
@@ -76,7 +74,6 @@ class TimeboxList extends React.Component {
 
 
     render() {
-        console.log(this.state)
         return (
             <>
                 <TimeBoxCreator
@@ -85,8 +82,8 @@ class TimeboxList extends React.Component {
                 <ErrorCatcher message="Coś się popsulo">
                     {this.state.timeboxes.map((timebox, index) =>
                         <EditableTimebox key={timebox.id}
-                            // id={timebox.id}
-                            id={timebox.id}
+                                         id={timebox.id}
+
                                          timebox={timebox}
                                          index={index}
                                          title={timebox.title}

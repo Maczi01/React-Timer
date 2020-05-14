@@ -44,15 +44,9 @@ const EditableTimebox = ({title, totalTimeInMinutes, id, onDelete, updateTimebox
         <div className="Timebox">
             {isEditing ?
                 <TimeboxEditForm
-                    // update={onEdit}
                     id={id}
                     updateTimebox={updateTimebox}
                     changeEdit={changeEdit}
-                    // id={this.props.id}
-                    // handleSubmit={this.handleSubmit}
-                    // handleTitleChange={this.handleTitleChange}
-                    // handleTotalTimeInMinutesChange={this.handleTotalTimeInMinutesChange}
-                    // isEditing={isEditing}
                     title={title}
                     totalTimeInMinutes={totalTimeInMinutes}
                 />
