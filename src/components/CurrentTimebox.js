@@ -22,11 +22,8 @@ class CurrentTimebox extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log("kaczka")
-        console.count("component will unmount")
         this.stopCounting()
     }
-
 
     handleStart() {
         this.setState({
