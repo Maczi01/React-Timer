@@ -20,17 +20,49 @@ const timeboxes = [{
     totalTimeInMinutes: "20",
     isEditing: false
 }]
+
+const findIndexById = (id) => {
+    const result = timeboxes.findIndex(timebox => timebox.id == id);
+    if (result < 0) {
+        throw new Error("Coś nie tak...")
+    }
+    return result;
+}
+
 const TimeboxesApi = {
     getAllTimeboxes: async () => {
         await wait(1000);
-        // throw new Error("Coś nie tak...")
-        return timeboxes
+        console.log("get", timeboxes)
+        return [...timeboxes]
     },
 
     addNewTimebox: async (timeboxToAdd) => {
         await wait(1000);
+        const addedTimebox = {...timeboxToAdd, id: uuid.v4()}
+        timeboxes.push(addedTimebox);
+        console.log('post', timeboxes)
+        return addedTimebox;
+    },
 
-        timeboxes.push({...timeboxToAdd, id: uuid.v4()})
+    replaceTimebox: async (timeboxToReplace) => {
+        await wait(1000);
+        if (!timeboxToReplace.id) {
+            throw new Error("Nie mozna zastąpić elementu bez id")
+        }
+        const index = findIndexById(timeboxToReplace.id);
+        const replacedTimebox = {...timeboxToReplace};
+        timeboxes[index] = replacedTimebox;
+        console.log('put', timeboxes)
+        return replacedTimebox
+    },
+    removeTimebox: async (timeboxToRemove) => {
+        await wait(1000);
+        if (!timeboxToRemove.id) {
+            throw new Error("Nie mozna zastąpić elementu bez id")
+        }
+        const index = findIndexById(timeboxToRemove.id);
+        timeboxes.splice(index, 1);
+        console.log('delete', timeboxes)
     }
 }
 const wait = (ms = 1000) => {
@@ -50,7 +82,7 @@ class TimeboxList extends React.Component {
 
     componentDidMount() {
         TimeboxesApi.getAllTimeboxes()
-            .then(timeboxes => this.setState({timeboxes}))
+            .then((timeboxes) => this.setState({timeboxes}))
             .catch(error => this.setState({error}))
             .finally(() => this.setState({loading: false}))
     }
@@ -70,35 +102,44 @@ class TimeboxList extends React.Component {
         });
     };
 
-    updateTimebox = (updatedTimebox) => {
-        this.setState(prevState => {
-            const newState = {
-                timeboxes: [
-                    ...prevState.timeboxes.map(timebox =>
-                        timebox.id === updatedTimebox.id ? updatedTimebox : timebox
-                    )]
-            }
-            return newState;
-        });
+    updateTimebox = (timeboxToUpdate) => {
+        TimeboxesApi.replaceTimebox(timeboxToUpdate)
+            .then((updatedTimebox) => this.setState(prevState => {
+                    const newState = {
+                        timeboxes: [
+                            ...prevState.timeboxes.map(timebox =>
+                                timebox.id === updatedTimebox.id ? updatedTimebox : timebox
+                            )]
+                    }
+                    return newState;
+                })
+            );
     }
 
     removeTimebox = (indexToRemove) => {
-        this.setState(prevState => {
-            const timeboxes = this.state.timeboxes.filter((timebox, index) =>
-                index !== indexToRemove)
-            return {timeboxes}
-        })
+        TimeboxesApi.removeTimebox(this.state.timeboxes[indexToRemove]).then(
+            this.setState(prevState => {
+                const timeboxes = this.state.timeboxes.filter((timebox, index) =>
+                    index !== indexToRemove)
+                return {timeboxes}
+            })
+        )
     };
 
-    addTimebox = (timebox) => {
-        TimeboxesApi.addNewTimebox(timebox).then(
-            (addedTimebox) =>
-                this.setState(prevState => {
-                    const timeboxes = [...prevState.timeboxes, timeboxes];
-                    return {timeboxes};
-                })
-        )
+    // addTimebox = (timebox) => {
+    //     TimeboxesApi.addNewTimebox(timebox).then(
+    //         (addedTimebox) =>
+    //             this.setState(prevState => {
+    //                 const timeboxes = [...prevState.timeboxes, addedTimebox];
+    //                 return {timeboxes};
+    //             })
+    //     )
+    // }
 
+    addTimebox = (timebox) => {
+        TimeboxesApi.addNewTimebox(timebox)
+            .then(() => TimeboxesApi.getAllTimeboxes())
+            .then((timeboxes) => this.setState({timeboxes}))
     }
 
     handleCreate = (createdTimebox) => {
@@ -107,6 +148,7 @@ class TimeboxList extends React.Component {
 
 
     render() {
+        // const {timeboxes} = this.state;
         return (
             <>
                 <TimeBoxCreator
