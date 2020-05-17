@@ -4,8 +4,8 @@ import TimeBoxCreator from "./TimeBoxCreator";
 import ErrorCatcher from "./ErrorCatcher";
 
 class TimeboxList extends React.Component {
-    state = {
         //To powinno być one source of truth
+    state = {
         timeboxes: [
             {
                 id: "dxgcbhjk",

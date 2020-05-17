@@ -1,12 +1,9 @@
 import React from "react";
-import uuid from "uuid";
 
-// const TimeboxEditForm = ({handleSubmit, handleTitleChange, handleTotalTimeInMinutesChange, title, totalTimeInMinutes}) => (
 class TimeboxEditForm extends React.Component {
+// const TimeboxEditForm = ({handleSubmit, handleTitleChange, handleTotalTimeInMinutesChange, title, totalTimeInMinutes}) => (
     //On powinien mieć swój własny stan
-
     //ma się nazywać timebox edit form
-
 
     state = {
         id: this.props.id,

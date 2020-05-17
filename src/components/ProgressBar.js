@@ -8,6 +8,4 @@ function ProgressBar({percent = 20}) {
     )
 }
 
-
-
 export default ProgressBar;
