@@ -15,7 +15,7 @@ class TimeBoxCreator extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.onCreate({
-            id: uuid.v4(),
+            // id: uuid.v4(),
             title: this.state.title,
             totalTimeInMinutes: this.state.totalTimeInMinutes
         });
