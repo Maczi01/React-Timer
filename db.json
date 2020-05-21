@@ -1,0 +1,19 @@
+{
+  "timeboxes": [
+    {
+      "id": 12,
+      "title": "Nauka elementów klasowych",
+      "totalTimeInMinutes": "3"
+    },
+    {
+      "id": 13,
+      "title": "Nauka CSS",
+      "totalTimeInMinutes": "60"
+    },
+    {
+      "id": 14,
+      "title": "Przerwa",
+      "totalTimeInMinutes": "15"
+    }
+  ]
+}
