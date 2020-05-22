@@ -3,7 +3,7 @@ import EditableTimebox from "./EditableTimebox";
 import TimeBoxCreator from "./TimeBoxCreator";
 import ErrorCatcher from "./ErrorCatcher";
 import TimeboxesApi from '../api/AxiosTimeboxesAPI'
-
+import styled from 'styled-components';
 
 class TimeboxList extends React.Component {
     //To powinno być one source of truth
@@ -58,16 +58,6 @@ class TimeboxList extends React.Component {
             })
         )
     };
-
-    // addTimebox = (timebox) => {
-    //     TimeboxesApi.addNewTimebox(timebox).then(
-    //         (addedTimebox) =>
-    //             this.setState(prevState => {
-    //                 const timeboxes = [...prevState.timeboxes, addedTimebox];
-    //                 return {timeboxes};
-    //             })
-    //     )
-    // }
 
     addTimebox = (timebox) => {
         TimeboxesApi.addNewTimebox(timebox)
