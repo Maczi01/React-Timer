@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const BASE_URL = "http://localhost:3010/timeboxes";
-const BASE_URL = "http://localhost:8080/api/";
+const BASE_URL = "http://localhost:3000/timeboxes";
+// const BASE_URL = "http://localhost:8080/api/";
 
 const AxiosTimeboxesApi = {
     getAllTimeboxes: async () => {
@@ -21,7 +21,7 @@ const AxiosTimeboxesApi = {
             throw new Error("This timebox haven't id!")
         }
         const response = await axios.put(`${BASE_URL}/${timeboxToReplace.id}`, timeboxToReplace);
-        const editedTimebox = response.data
+        const editedTimebox = response.data;
         return editedTimebox;
     },
 

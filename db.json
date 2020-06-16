@@ -1,4 +1,16 @@
 {
+  "users": [
+    {
+      "email": "mati@mati.pl",
+      "password": "$2a$10$MK17SlmLb9Yui3eimyJ/Wee6GhWleYzD8mH3B1Hl3p7.vZ5i/x.eS",
+      "id": 1
+    },
+    {
+      "email": "frida@frida.pl",
+      "password": "$2a$10$LKpSHGbBLCelcO/BHeLP5O0G/neqqAPJ8nCHhgjyF/9UhJPp.iJ3C",
+      "id": 2
+    }
+  ],
   "timeboxes": [
     {
       "id": 12,

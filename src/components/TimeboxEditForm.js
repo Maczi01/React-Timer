@@ -20,19 +20,12 @@ class TimeboxEditForm extends React.Component {
     }
 
     handleSubmit = (e) => {
-        e.preventDefault()
-        // this.setState({isEditing: false}
-        // )
-        // this.props.changeEdit()
-        // this.setState({
-        //     isEditing: true,
-        // })
+        e.preventDefault();
         this.props.updateTimebox(this.state)
 
     }
 
     render() {
-        // console.log(this.state)
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>
