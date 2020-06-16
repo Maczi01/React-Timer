@@ -19,6 +19,16 @@ body {
   padding-bottom: 20px;
 }
 
+.header{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 10px;
+  &__logout--link{
+    margin-left: 20px;
+  }
+}
+
 
 
 
