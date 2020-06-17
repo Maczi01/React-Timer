@@ -5,6 +5,7 @@ import Title from "./Title";
 import ErrorCatcher from "./ErrorCatcher";
 import styled from 'styled-components';
 import LoginForm from "./LoginForm";
+import AuthenticationApi from "../api/FetchAuthenticationApi";
 
 const AppWrapper = styled.div`
   width: 80vw;
@@ -14,13 +15,37 @@ const AppWrapper = styled.div`
 
 class App extends React.Component {
 
-    isUserLoggedIn = () => false;
+    state = {
+        accessToken: null,
+        previosLoginAttemptFailed: false,
+    }
+
+    isUserLoggedIn = () => !!this.state.accessToken;
 
     getUserEmail = () => "alice@example.com";
 
-    handleLogout = () => console.log("logout");
+    handleLogout = () => {
+        this.setState({
+            accesToken: null,
+            previosLoginAttemptFailed: false,
+        })
+    }
 
-    onLoginAttempt = (credentials) => console.log("Zalogowano", credentials)
+    onLoginAttempt = (credentials) => {
+        AuthenticationApi.login(credentials).then(({accesToken}) =>
+            this.setState({
+                accesToken,
+                previosLoginAttemptFailed: false,
+            })
+        ).catch(
+            () => {
+                this.setState({
+                    accesToken,
+                    previosLoginAttemptFailed: true,
+                })
+            }
+        )
+    }
 
     render() {
         return (
@@ -40,7 +65,7 @@ class App extends React.Component {
                             </>
                             :
                             <LoginForm
-                                errorMessage="Nie udało się zalogować"
+                                errorMessage={this.state.previosLoginAttemptFailed ? "Nie udało się zalogować" : null}
                                 onLoginAttempt={this.onLoginAttempt}
                             />
                     }
