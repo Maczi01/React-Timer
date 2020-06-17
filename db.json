@@ -33,6 +33,11 @@
       "id": 6,
       "title": "jem zupe",
       "totalTimeInMinutes": "99"
+    },
+    {
+      "title": "dzik",
+      "totalTimeInMinutes": "1",
+      "id": 7
     }
   ]
 }
