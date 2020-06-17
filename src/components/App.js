@@ -5,7 +5,7 @@ import Title from "./Title";
 import ErrorCatcher from "./ErrorCatcher";
 import styled from 'styled-components';
 import LoginForm from "./LoginForm";
-import AuthenticationApi from "../api/FetchAuthenticationApi";
+import AuthenticationApi from "../api/AxiosAuthenticationApi";
 import jwt from 'jsonwebtoken';
 
 const AppWrapper = styled.div`
