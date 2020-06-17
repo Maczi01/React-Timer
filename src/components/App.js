@@ -6,6 +6,7 @@ import ErrorCatcher from "./ErrorCatcher";
 import styled from 'styled-components';
 import LoginForm from "./LoginForm";
 import AuthenticationApi from "../api/FetchAuthenticationApi";
+import jwt from 'jsonwebtoken';
 
 const AppWrapper = styled.div`
   width: 80vw;
@@ -22,7 +23,11 @@ class App extends React.Component {
 
     isUserLoggedIn = () => !!this.state.accessToken;
 
-    getUserEmail = () => "alice@example.com";
+    getUserEmail = () => {
+        const decoded = jwt.decode(this.state.accessToken);
+        return decoded.email;
+    }
+
 
     handleLogout = () => {
         this.setState({
@@ -32,15 +37,14 @@ class App extends React.Component {
     }
 
     onLoginAttempt = (credentials) => {
-        AuthenticationApi.login(credentials).then(({accesToken}) =>
+        AuthenticationApi.login(credentials).then(({accessToken}) =>
             this.setState({
-                accesToken,
+                accessToken,
                 previosLoginAttemptFailed: false,
             })
         ).catch(
             () => {
                 this.setState({
-                    accesToken,
                     previosLoginAttemptFailed: true,
                 })
             }
