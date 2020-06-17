@@ -4,6 +4,7 @@ import EditableCurrentTimebox from "./EditableCurrentTimebox";
 import Title from "./Title";
 import ErrorCatcher from "./ErrorCatcher";
 import styled from 'styled-components';
+import LoginForm from "./LoginForm";
 
 const AppWrapper = styled.div`
   width: 80vw;
@@ -13,11 +14,13 @@ const AppWrapper = styled.div`
 
 class App extends React.Component {
 
-    isUserLoggedIn = () => true;
+    isUserLoggedIn = () => false;
 
     getUserEmail = () => "alice@example.com";
 
     handleLogout = () => console.log("logout");
+
+    onLoginAttempt = (credentials) => console.log("Zalogowano", credentials)
 
     render() {
         return (
@@ -36,9 +39,10 @@ class App extends React.Component {
                                 </header>
                             </>
                             :
-                            <div>
-                                Login form
-                            </div>
+                            <LoginForm
+                                errorMessage="Nie udało się zalogować"
+                                onLoginAttempt={this.onLoginAttempt}
+                            />
                     }
                 </ErrorCatcher>
 
