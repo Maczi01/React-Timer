@@ -18,7 +18,7 @@ class App extends React.Component {
 
     state = {
         accessToken: null,
-        previosLoginAttemptFailed: false,
+        previousLoginAttemptFailed: false,
     }
 
     isUserLoggedIn = () => !!this.state.accessToken;
@@ -51,18 +51,17 @@ class App extends React.Component {
         AuthenticationApi.login(credentials).then(({accessToken}) => {
                 this.setState({
                     accessToken,
-                    previosLoginAttemptFailed: false,
+                    previousLoginAttemptFailed: false,
                 })
-                localStorage.setItem("accessToken", accessToken)
-                this.startCounting();
-            const decoded = jwt.decode(this.state.accessToken);
-                console.log(new Date(decoded.iat*1000))
-
+                // localStorage.setItem("accessToken", accessToken)
+                // this.startCounting();
+            // const decoded = jwt.decode(this.state.accessToken);
+            //     console.log(new Date(decoded.iat*1000))
             }
         ).catch(
             () => {
                 this.setState({
-                    previosLoginAttemptFailed: true,
+                    previousLoginAttemptFailed: true,
                 })
             }
         )
@@ -71,7 +70,7 @@ class App extends React.Component {
     handleLogout = () => {
         this.setState({
             accessToken: null,
-            previosLoginAttemptFailed: false,
+            previousLoginAttemptFailed: false,
         });
         localStorage.removeItem("accessToken");
     }
@@ -88,13 +87,13 @@ class App extends React.Component {
                                     Witaj {this.getUserEmail()}
                                     <a onClick={this.handleLogout} className="header__logout--link"
                                        href="#"> Wyloguj</a>
-                                    <TimeboxList/>
+                                    <TimeboxList accessToken={this.state.accessToken}/>
                                     <EditableCurrentTimebox/>
                                 </header>
                             </>
                             :
                             <LoginForm
-                                errorMessage={this.state.previosLoginAttemptFailed ? "Nie udało się zalogować" : null}
+                                errorMessage={this.state.previousLoginAttemptFailed ? "Nie udało się zalogować" : null}
                                 onLoginAttempt={this.onLoginAttempt}
                             />
                     }

@@ -2,7 +2,8 @@ import React from 'react'
 import EditableTimebox from "./EditableTimebox";
 import TimeBoxCreator from "./TimeBoxCreator";
 import ErrorCatcher from "./ErrorCatcher";
-import TimeboxesApi from '../api/AxiosTimeboxesAPI'
+import TimeboxesApi from '../api/FetchTimeboxesAPI'
+// import TimeboxesApi from '../api/AxiosTimeboxesAPI'
 import styled from 'styled-components';
 
 class TimeboxList extends React.Component {
@@ -14,7 +15,7 @@ class TimeboxList extends React.Component {
     }
 
     componentDidMount() {
-        TimeboxesApi.getAllTimeboxes()
+        TimeboxesApi.getAllTimeboxes(this.props.accessToken)
             .then((timeboxes) => this.setState({timeboxes}))
             .catch(error => this.setState({error}))
             .finally(() => this.setState({loading: false}))
@@ -36,7 +37,7 @@ class TimeboxList extends React.Component {
     };
 
     updateTimebox = (timeboxToUpdate) => {
-        TimeboxesApi.replaceTimebox(timeboxToUpdate)
+        TimeboxesApi.replaceTimebox(timeboxToUpdate, this.props.accessToken)
             .then((updatedTimebox) => this.setState(prevState => {
                     const newState = {
                         timeboxes: [
@@ -50,7 +51,7 @@ class TimeboxList extends React.Component {
     }
 
     removeTimebox = (indexToRemove) => {
-        TimeboxesApi.removeTimebox(this.state.timeboxes[indexToRemove]).then(
+        TimeboxesApi.removeTimebox(this.state.timeboxes[indexToRemove], this.props.accessToken).then(
             this.setState(prevState => {
                 const timeboxes = this.state.timeboxes.filter((timebox, index) =>
                     index !== indexToRemove)
@@ -60,7 +61,7 @@ class TimeboxList extends React.Component {
     };
 
     addTimebox = (timebox) => {
-        TimeboxesApi.addNewTimebox(timebox)
+        TimeboxesApi.addNewTimebox(timebox, this.props.accessToken)
             .then(() => TimeboxesApi.getAllTimeboxes())
             .then((timeboxes) => this.setState({timeboxes}))
     }
