@@ -20,21 +20,19 @@
   ],
   "timeboxes": [
     {
-      "id": 1,
-      "title": "Nauka elementów klasowych",
+      "id": 4,
+      "title": "pieczenie gęsi",
+      "totalTimeInMinutes": "5"
+    },
+    {
+      "title": "pieczenie kurczaka",
       "totalTimeInMinutes": "3",
-      "userId": 1
+      "id": 5
     },
     {
-      "id": 2,
-      "title": "Nauka CSS",
-      "totalTimeInMinutes": "60",
-      "userId": 2
-    },
-    {
-      "id": 3,
-      "title": "Przerwa",
-      "totalTimeInMinutes": "15"
+      "id": 6,
+      "title": "jem zupe",
+      "totalTimeInMinutes": "99"
     }
   ]
 }

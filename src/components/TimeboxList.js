@@ -62,7 +62,7 @@ class TimeboxList extends React.Component {
 
     addTimebox = (timebox) => {
         TimeboxesApi.addNewTimebox(timebox, this.props.accessToken)
-            .then(() => TimeboxesApi.getAllTimeboxes())
+            .then(() => TimeboxesApi.getAllTimeboxes(this.props.accessToken))
             .then((timeboxes) => this.setState({timeboxes}))
     }
 
