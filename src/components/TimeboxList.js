@@ -2,8 +2,8 @@ import React from 'react'
 import EditableTimebox from "./EditableTimebox";
 import TimeBoxCreator from "./TimeBoxCreator";
 import ErrorCatcher from "./ErrorCatcher";
-import TimeboxesApi from '../api/FetchTimeboxesAPI'
-// import TimeboxesApi from '../api/AxiosTimeboxesAPI'
+// import TimeboxesApi from '../api/FetchTimeboxesAPI'
+import TimeboxesApi from '../api/AxiosTimeboxesAPI'
 import styled from 'styled-components';
 
 class TimeboxList extends React.Component {

@@ -20,14 +20,9 @@
   ],
   "timeboxes": [
     {
-      "id": 4,
-      "title": "pieczenie gęsi",
-      "totalTimeInMinutes": "5"
-    },
-    {
-      "title": "pieczenie kurczaka",
-      "totalTimeInMinutes": "3",
-      "id": 5
+      "id": 5,
+      "title": "pieczenie grila",
+      "totalTimeInMinutes": "3"
     },
     {
       "id": 6,
@@ -35,9 +30,9 @@
       "totalTimeInMinutes": "99"
     },
     {
-      "title": "dzik",
-      "totalTimeInMinutes": "1",
-      "id": 7
+      "id": 7,
+      "title": "Jem wołowinę",
+      "totalTimeInMinutes": "5"
     }
   ]
 }
