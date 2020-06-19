@@ -7,8 +7,6 @@ const authorizationHeader = (accessToken) => '"Authorization": `Bearer ${accessT
 
 const AxiosTimeboxesApi = {
 
-
-
     getAllTimeboxes: async (accessToken) => {
         const response = await axios.get(BASE_URL,{
             headers: {

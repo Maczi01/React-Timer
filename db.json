@@ -18,21 +18,5 @@
       "id": 3
     }
   ],
-  "timeboxes": [
-    {
-      "id": 5,
-      "title": "pieczenie grila",
-      "totalTimeInMinutes": "3"
-    },
-    {
-      "id": 6,
-      "title": "jem zupe",
-      "totalTimeInMinutes": "99"
-    },
-    {
-      "id": 7,
-      "title": "Jem wołowinę",
-      "totalTimeInMinutes": "5"
-    }
-  ]
+  "timeboxes": []
 }
