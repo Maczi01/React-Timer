@@ -3,11 +3,13 @@ import uuid from "uuid";
 
 class LoginForm extends React.Component {
     state = {
-        email: "mati@mati.pl",
-        password: "qwerty"
+        // email: "mati@mati.pl",
+        // password: "qwerty"
+        login: "user",
+        password: "password"
     }
     handleEmailChange = (e) => {
-        this.setState({email: e.target.value})
+        this.setState({login: e.target.value})
     }
     handlePasswordChange = (e) => {
         this.setState({password: e.target.value})
@@ -15,7 +17,7 @@ class LoginForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.onLoginAttempt({
-            email: this.state.email,
+            login: this.state.login,
             password: this.state.password
         });
     }
@@ -28,9 +30,9 @@ class LoginForm extends React.Component {
                     <div className="LoginForm__error--message">{this.props.errorMessage}</div>
                     : null
                 }
-                <label>Email
+                <label>login
                     <input
-                        value={this.state.email}
+                        value={this.state.login}
                         onChange={this.handleEmailChange}
                         type="text"/>
                 </label><br/>

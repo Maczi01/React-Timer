@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/timeboxes";
-// const BASE_URL = "http://localhost:8080/api/";
+// const BASE_URL = "http://localhost:3000/timeboxes";
+const BASE_URL = "http://localhost:8080/api/timeboxes";
 
 const authorizationHeader = (accessToken) => '"Authorization": `Bearer ${accessToken}`';
 
@@ -10,7 +10,8 @@ const AxiosTimeboxesApi = {
     getAllTimeboxes: async (accessToken) => {
         const response = await axios.get(BASE_URL,{
             headers: {
-                "Authorization": `Bearer ${accessToken}`
+                "Authorization": `Bearer ${accessToken}`,
+                'Access-Control-Allow-Origin': '*'
             }
         });
         const timeboxes = response.data;
@@ -20,7 +21,8 @@ const AxiosTimeboxesApi = {
     addNewTimebox: async (timeboxToAdd,accessToken) => {
         const response = await axios.post(BASE_URL, timeboxToAdd,{
             headers: {
-                "Authorization": `Bearer ${accessToken}`
+                "Authorization": `Bearer ${accessToken}`,
+                'Access-Control-Allow-Origin': '*'
             }
         });
         const addedTimebox = response.data
@@ -33,7 +35,8 @@ const AxiosTimeboxesApi = {
         }
         const response = await axios.put(`${BASE_URL}/${timeboxToReplace.id}`, timeboxToReplace,{
             headers: {
-                "Authorization": `Bearer ${accessToken}`
+                "Authorization": `Bearer ${accessToken}`,
+                'Access-Control-Allow-Origin': '*'
             }
         });
         const editedTimebox = response.data;
@@ -46,7 +49,8 @@ const AxiosTimeboxesApi = {
         }
         await axios.delete(`${BASE_URL}/${timeboxToRemove.id}`,{
             headers: {
-                "Authorization": `Bearer ${accessToken}`
+                "Authorization": `Bearer ${accessToken}`,
+                'Access-Control-Allow-Origin': '*'
             }
         });
 
