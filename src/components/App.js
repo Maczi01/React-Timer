@@ -28,12 +28,12 @@ class App extends React.Component {
         return decoded.email;
     }
 
-    componentDidMount() {
-        const currentAccessToken = localStorage.getItem("accessToken");
-        this.setState({
-            accessToken: currentAccessToken
-        })
-    }
+    // componentDidMount() {
+    // //     // const currentAccessToken = localStorage.getItem("accessToken");
+    //     this.setState({
+    // //         accessToken: currentAccessToken
+    //     })
+    // }
 
     startCounting = () => {
         let time = 10;
@@ -49,10 +49,12 @@ class App extends React.Component {
 
     onLoginAttempt = (credentials) => {
         AuthenticationApi.login(credentials).then(({accessToken}) => {
+            console.log(accessToken)
                 this.setState({
                     accessToken,
                     previousLoginAttemptFailed: false,
                 })
+                console.log({accessToken})
                 // localStorage.setItem("accessToken", accessToken)
                 // this.startCounting();
             // const decoded = jwt.decode(this.state.accessToken);
@@ -72,7 +74,7 @@ class App extends React.Component {
             accessToken: null,
             previousLoginAttemptFailed: false,
         });
-        localStorage.removeItem("accessToken");
+        // localStorage.removeItem("accessToken");
     }
 
     render() {
