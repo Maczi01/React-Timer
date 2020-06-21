@@ -28,13 +28,6 @@ class App extends React.Component {
         return decoded.email;
     }
 
-    // componentDidMount() {
-    // //     // const currentAccessToken = localStorage.getItem("accessToken");
-    //     this.setState({
-    // //         accessToken: currentAccessToken
-    //     })
-    // }
-
     startCounting = () => {
         let time = 10;
         setInterval(() => {
@@ -55,10 +48,6 @@ class App extends React.Component {
                     previousLoginAttemptFailed: false,
                 })
                 console.log({accessToken})
-                // localStorage.setItem("accessToken", accessToken)
-                // this.startCounting();
-            // const decoded = jwt.decode(this.state.accessToken);
-            //     console.log(new Date(decoded.iat*1000))
             }
         ).catch(
             () => {
@@ -74,7 +63,6 @@ class App extends React.Component {
             accessToken: null,
             previousLoginAttemptFailed: false,
         });
-        // localStorage.removeItem("accessToken");
     }
 
     render() {
