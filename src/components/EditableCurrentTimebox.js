@@ -3,7 +3,6 @@ import TimeBoxEditor from "./TimeBoxEditor";
 import CurrentTimebox from "./CurrentTimebox";
 
 class EditableCurrentTimebox extends React.Component {
-    //Obecny formularz do bierzącego stanu
     state = {
         title: "Uczę się wyciągania stanu w górę",
         totalTimeInMinutes: 1,

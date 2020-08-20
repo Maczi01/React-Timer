@@ -3,7 +3,7 @@ import React from "react";
 class TimeboxEditForm extends React.Component {
 // const TimeboxEditForm = ({handleSubmit, handleTitleChange, handleTotalTimeInMinutesChange, title, totalTimeInMinutes}) => (
     //On powinien mieć swój własny stan
-    //ma się nazywać timebox edit form
+    //ma się nazywać timebox edit form//
 
     state = {
         id: this.props.id,

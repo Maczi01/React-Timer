@@ -22,7 +22,6 @@ const AxiosTimeboxesApi = {
                 headers: {
                     "Authorization": `Bearer ${accessToken}`,
                 }
-
             },
         );
         const addedTimebox = response.data
