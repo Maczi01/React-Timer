@@ -10,14 +10,14 @@ class TimeboxEditForm extends React.Component {
         title: this.props.title,
         totalTimeInMinutes: this.props.totalTimeInMinutes,
         // isEditing: this.props.isEditing
-    }
+    };
 
     handleTitleChange = (e) => {
         this.setState({title: e.target.value})
-    }
+    };
     handleTotalTimeInMinutesChange = (e) => {
         this.setState({totalTimeInMinutes: e.target.value})
-    }
+    };
 
     handleSubmit = (e) => {
         e.preventDefault();
