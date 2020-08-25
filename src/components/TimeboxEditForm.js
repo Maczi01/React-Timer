@@ -41,7 +41,7 @@ class TimeboxEditForm extends React.Component {
                         onChange={this.handleTotalTimeInMinutesChange}
                         type="number"/>
                 </label>
-                <button>Zapisz</button>
+                <button>Zapisz stan</button>
             </form>
         )
     }
