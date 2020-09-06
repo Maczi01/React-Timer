@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 function Clock({minute, second, className}) {
-    return <h2 className={"Clock " + className}> Pozostało  czasu
+    return <h2 className={"Clock " + className}> Pozostało czasu
         <span className="Clock__unit">{minute}</span>
         <span className="Clock__unit">:</span>
         <span className="Clock__unit Clock__unit--sec">{second}</span></h2>
