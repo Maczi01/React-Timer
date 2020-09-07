@@ -13,9 +13,9 @@ class EditableCurrentTimebox extends React.Component {
             {title: e.target.value}
         )
     }
-    handleTotalTimeInMinutesChange = (e) => {
+    handleTotalTimeInMinutesChange = (event) => {
         this.setState(
-            {totalTimeInMinutes: e.target.value}
+            {totalTimeInMinutes: event.target.value}
         )
     }
     handleConfirm = () => {
