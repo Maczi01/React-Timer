@@ -40,7 +40,7 @@ class TimeBoxCreator extends React.Component {
                         onChange={this.handleTotalTimeInMinutesChange}
                         type="number"/>
                 </label><br/>
-                <button>Dodaj timeboxa
+                <button>Dodaj timebox
                 </button>
             </form>
         )

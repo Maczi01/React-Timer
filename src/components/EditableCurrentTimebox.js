@@ -51,7 +51,6 @@ class EditableCurrentTimebox extends React.Component {
                             onEdit={this.handleEdit}
                         />
                     }
-
                 </React.StrictMode>
             </>
 
