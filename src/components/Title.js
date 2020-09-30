@@ -16,7 +16,7 @@ const Header = styled.h1`
 
 const Title = () => (
     <HeaderWrapper>
-        <Header>simple timer</Header>
+        <Header>simple timer !</Header>
     </HeaderWrapper>
 )
 
