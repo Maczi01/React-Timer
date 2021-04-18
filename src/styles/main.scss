@@ -1,38 +1,4 @@
-//@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500,700&display=swap');
 @import "base.scss";
 @import "variables.scss";
 @import "utilities.scss";
 @import "components.scss";
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Monserrat', sans-serif;
-}
-
-
-.menuWrapper {
-  width: 80vw;
-  margin: 0 auto;
-  display: flex;
-  background-color: yellow;
-  padding-bottom: 20px;
-}
-
-.header{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin: 10px;
-  &__logout--link{
-    margin-left: 20px;
-  }
-}
-
-
-
-
-
-
-
-

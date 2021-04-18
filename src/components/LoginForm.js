@@ -1,54 +1,49 @@
-import React from 'react';
-import uuid from "uuid";
+import React from "react";
 
 class LoginForm extends React.Component {
-    state = {
-        // email: "mati@mati.pl",
-        // password: "qwerty"
-        login: "user",
-        password: "password"
+    constructor(props) {
+        super(props);
+        this.emailInput = React.createRef();
+        this.passwordInput = React.createRef();
     }
-    handleEmailChange = (e) => {
-        this.setState({login: e.target.value})
-    }
-    handlePasswordChange = (e) => {
-        this.setState({password: e.target.value})
-    }
-    handleSubmit = (e) => {
-        e.preventDefault()
-        this.props.onLoginAttempt({
-            login: this.state.login,
-            password: this.state.password
+    handleSubmit = (event) => {
+        event.preventDefault(); 
+        this.props.onLoginAttempt({ 
+            email: this.emailInput.current.value, 
+            password: this.passwordInput.current.value
         });
+        this.emailInput.current.value = "";
+        this.passwordInput.current.value = "";
     }
-
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} className="LoginForm" autoComplete="off">
-                {this.props.errorMessage ?
-                    <div className="LoginForm__error--message">{this.props.errorMessage}</div>
-                    : null
+            <form onSubmit={this.handleSubmit} className="LoginForm">
+                { this.props.errorMessage ? 
+                    <div className="LoginForm__error-message">{this.props.errorMessage}</div> :
+                    null
                 }
-                <label>login
-                    <input
-                        value={this.state.login}
-                        onChange={this.handleEmailChange}
-                        type="text"/>
-                </label><br/>
-                <label>Hasło
-                    <input
-                        autoComplete="off"
-                        value={this.state.password}
-                        onChange={this.handlePasswordChange}
-                        type="password"
+                <label>
+                    Email
+                    <input 
+                        ref={this.emailInput}
+                        type="text" 
+                        defaultValue="bob@example.com"
                     />
                 </label><br/>
-                <button>Zaloguj
-                </button>
+                <label>
+                    Hasło
+                    <input 
+                        ref={this.passwordInput}
+                        type="password" 
+                        defaultValue="secret"
+                    />
+                </label><br />
+                <button 
+                >Zaloguj się</button>
             </form>
         )
     }
 }
 
-export default LoginForm
+export default LoginForm;

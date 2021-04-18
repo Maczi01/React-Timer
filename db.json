@@ -1,22 +1,41 @@
 {
   "users": [
     {
-      "email": "mati@mati.pl",
-      "password": "$2a$10$MK17SlmLb9Yui3eimyJ/Wee6GhWleYzD8mH3B1Hl3p7.vZ5i/x.eS",
+      "email": "michal@kursreacta.pl",
+      "password": "$2a$10$bHSWPI5ke02BStAUHXgi4ec88fs1S299qHL8iRACJGsP54pgczjqS",
       "id": 1
     },
     {
-      "email": "frida@frida.pl",
-      "password": "$2a$10$LKpSHGbBLCelcO/BHeLP5O0G/neqqAPJ8nCHhgjyF/9UhJPp.iJ3C",
+      "email": "bob@example.com",
+      "password": "$2a$10$8UzZYd/gn2T.3vgFwZNdlOoG90m1/j1u55nTilAQTrbNp1gGhQPsK",
       "id": 2
-    },
-    {
-      "email": "judka@judka.pl",
-      "password": "$2a$10$qI1ueguclbB2iUnEameiCubdKFNLMStiOMbVgBr7CCxJ2QMzVVTCu",
-      "firstName": "Judka",
-      "lastName": "Judy",
-      "id": 3
     }
   ],
-  "timeboxes": []
+  "timeboxes": [
+    {
+      "totalTimeInMinutes": 10,
+      "title": "Uczę się json-server-auth",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "Tworzę rekordy uzytkowników",
+      "totalTimeInMinutes": 10
+    },
+    {
+      "id": 3,
+      "title": "Rejestruję uzytkownika",
+      "totalTimeInMinutes": 15
+    },
+    {
+      "title": "Wylogowuje sie",
+      "totalTimeInMinutes": 20,
+      "id": 8
+    },
+    {
+      "title": "sdvsadf",
+      "totalTimeInMinutes": "4444",
+      "id": 9
+    }
+  ]
 }

@@ -1,20 +1,17 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-function Clock({minute, second, className}) {
-    return <h2 className={"Clock " + className}> Pozostało czasu
-        <span className="Clock__unit">{minute}</span>
-        <span className="Clock__unit">:</span>
-        <span className="Clock__unit Clock__unit--sec">{second}</span></h2>
+function Clock({ className, minutes, seconds }) {
+    return <h2 style={{}} className={"Clock  " + className}>Pozostało {minutes}:{seconds}</h2>
 }
-
-Clock.propTypes = {
-    minute: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-    second: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
-}
-
 Clock.defaultProps = {
     className: ""
+}
+const NumberOrStringType = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
+Clock.propTypes = {
+    className: PropTypes.string.isRequired,
+    minutes: NumberOrStringType.isRequired,
+    seconds: NumberOrStringType.isRequired
 }
 
 export default Clock;

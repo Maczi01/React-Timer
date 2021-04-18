@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
 
-const Timebox = ({title, totalTimeInMinutes}) => (
-    <div>
-        <h3>{title} - {totalTimeInMinutes} min</h3>
-    </div>
-)
+function Timebox({ title, totalTimeInMinutes, onDelete, onEdit }) {
+    return (
+        <div className="Timebox">
+            <h3>{title} - {totalTimeInMinutes} min.</h3>
+            <button onClick={onDelete} >Usuń</button>
+            <button onClick={onEdit}>Zmień</button>
+        </div>
+    )
+}
 
 export default Timebox;

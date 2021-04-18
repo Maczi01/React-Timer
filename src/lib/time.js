@@ -1,23 +1,9 @@
-const getTimeInMinutesAndSeconds = (totalTimeInSeconds) => {
-    const minutesLeft = Math.floor(totalTimeInSeconds / 60);
-    const secondsLeft = Math.floor(totalTimeInSeconds % 60);
-    return [minutesLeft, secondsLeft]
+function getMinutesAndSecondsFromDurationInSeconds(durationInSeconds) {
+    const minutes = Math.floor(durationInSeconds / 60);
+    const seconds = Math.floor(durationInSeconds % 60);
+    return [minutes, seconds];
 }
 
-function fizzBuzz(i) {
-    let result = '';
-    // let out = '';
-    if (i % 3 === 0) {
-        result += 'Fizz';
-    }
-    if (i % 5 === 0) {
-        result += 'Buzz';
-    }
-    return result || i;
-}
-
-function xxx(str) {
-    return str.split("").reduce((xyz, abc)=> abc + xyz, '');
-}
-
-export {getTimeInMinutesAndSeconds, fizzBuzz, xxx}
+export {
+    getMinutesAndSecondsFromDurationInSeconds
+};

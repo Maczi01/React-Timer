@@ -1,57 +1,66 @@
 import React from "react";
-import PauseCounter from "./PauseCounter";
-import ProgressBar from "./ProgressBar";
 import Clock from "./Clock";
-import {getTimeInMinutesAndSeconds} from '../lib/time'
+import ProgressBar from "./ProgressBar";
+import { getMinutesAndSecondsFromDurationInSeconds } from "../lib/time";
 
 class CurrentTimebox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isPaused: false,
             isRunning: false,
+            isPaused: false,
             pausesCount: 0,
-            elapsedTime: 0,
-        };
-        this.handleStart = this.handleStart.bind(this);
-        this.handlePause = this.handlePause.bind(this);
-        this.handleStop = this.handleStop.bind(this);
-        this.stopCounting = this.stopCounting.bind(this);
-        this.startCounting = this.startCounting.bind(this);
-        this.interval = null;
+            elapsedTimeInSeconds: 0
+        }
+        this.handleStart = this.handleStart.bind(this)
+        this.handleStop = this.handleStop.bind(this)
+        this.togglePause = this.togglePause.bind(this)
+        this.intervalId = null;
     }
-
+    
     componentWillUnmount() {
-        this.stopCounting()
+        this.stopTimer();
     }
-
-    handleStart() {
+    handleStart(event) {
         this.setState({
             isRunning: true
         })
-        this.startCounting();
+        this.startTimer();
     }
-
-    startCounting() {
-        if (this.interval === null) {
-            this.interval = window.setInterval((() => {
-                this.setState(
-                    (prevState) =>
-                        ({elapsedTime: prevState.elapsedTime + 1}))
-            }), 1000)
+    handleStop(event) { 
+        this.setState({
+            isRunning: false,
+            isPaused: false,
+            pausesCount: 0,
+            elapsedTimeInSeconds: 0
+        })
+        this.stopTimer();
+    }
+    startTimer() {
+        if (this.intervalId === null) {
+            this.intervalId = window.setInterval(
+                () => {
+                    this.setState(
+                        prevState => ({ elapsedTimeInSeconds: prevState.elapsedTimeInSeconds + 0.1 })
+                    )
+                },
+                100
+            );
         }
     }
-
-    stopCounting() {
-        window.clearInterval(this.interval)
-        this.interval = null;
+    stopTimer() {
+        window.clearInterval(this.intervalId);
+        this.intervalId = null;
     }
-
-    handlePause() {
+    togglePause() {
         this.setState(
-            function (prevState) {
+            function(prevState) {
                 const isPaused = !prevState.isPaused;
-                isPaused ? this.stopCounting() : this.startCounting();
+                if (isPaused) {
+                    this.stopTimer();
+                } else {
+                    this.startTimer();
+                }
                 return {
                     isPaused,
                     pausesCount: isPaused ? prevState.pausesCount + 1 : prevState.pausesCount
@@ -59,42 +68,31 @@ class CurrentTimebox extends React.Component {
             }
         )
     }
-
-    handleStop() {
-        this.setState({
-                isRunning: false,
-                isPaused: false,
-                elapsedTime: 0,
-                pausesCount: 0,
-            }
-        )
-        this.stopCounting()
-    }
-
     render() {
-        const {isRunning, isPaused, elapsedTime, pausesCount} = this.state;
-        const {title, totalTimeInMinutes, onEdit, isEditable} = this.props;
-        let playVisible = "button__play"
+        const { isPaused, isRunning, pausesCount, elapsedTimeInSeconds } = this.state;
+        const { title, totalTimeInMinutes, isEditable, onEdit } = this.props;
         const totalTimeInSeconds = totalTimeInMinutes * 60;
-        const timeToLeftInSeconds = totalTimeInSeconds - elapsedTime;
-        const [minutesLeft, secondsLeft] = getTimeInMinutesAndSeconds(timeToLeftInSeconds)
-        const progress = (timeToLeftInSeconds / totalTimeInSeconds) * 100;
-        if (timeToLeftInSeconds === 0) this.stopCounting();
+        const timeLeftInSeconds = totalTimeInSeconds - elapsedTimeInSeconds;
+        const [minutesLeft, secondsLeft] = getMinutesAndSecondsFromDurationInSeconds(timeLeftInSeconds)
+        const progressInPercent = (elapsedTimeInSeconds / totalTimeInSeconds) * 100.0;
         return (
-            <>
-                <div className={`timer__wrapper ${isEditable ? "inactive" : ""}`}>
-                    <h2>{title}</h2>
-                    <Clock minute={minutesLeft} second={secondsLeft}/>
-                    <PauseCounter pausesCount={pausesCount}/>
-                    <button onClick={this.handleStart} disabled={isRunning}>Start</button>
-                    <button onClick={this.handlePause} disabled={!isRunning}>{isPaused ? "Wznów" : "Pauzuj"}</button>
-                    <button onClick={this.handleStop} disabled={!isRunning}>Stop</button>
-                    <button onClick={onEdit} disabled={isEditable}>Edytuj</button>
-                </div>
-                <ProgressBar percent={progress}/>
-            </>
+            <div className={`CurrentTimebox ${isEditable ? "inactive" : ""}`}>
+                <h1>{title}</h1>
+                <Clock minutes={minutesLeft} seconds={secondsLeft} className={isPaused ? "inactive" : ""}/>
+                <ProgressBar 
+                    percent={progressInPercent} 
+                    className={isPaused ? "inactive" : ""}
+                    color="red"
+                    big
+                />
+                <button onClick={onEdit} disabled={isEditable}>Edytuj</button>
+                <button onClick={this.handleStart} disabled={isRunning}>Start</button>
+                <button onClick={this.handleStop} disabled={!isRunning}>Stop</button>
+                <button onClick={this.togglePause} disabled={!isRunning}>{isPaused ? "Wznów" : "Pauzuj"}</button>
+                Liczba przerw: {pausesCount}
+            </div>
         )
     }
 }
 
-export default CurrentTimebox
+export default CurrentTimebox;
