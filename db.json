@@ -13,19 +13,9 @@
   ],
   "timeboxes": [
     {
-      "totalTimeInMinutes": 10,
-      "title": "Uczę się json-server-auth",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "title": "Tworzę rekordy uzytkowników",
-      "totalTimeInMinutes": 10
-    },
-    {
-      "id": 3,
-      "title": "Rejestruję uzytkownika",
-      "totalTimeInMinutes": 15
+      "id": 4,
+      "title": "Loguje sie",
+      "totalTimeInMinutes": 5
     },
     {
       "title": "Wylogowuje sie",
@@ -33,9 +23,14 @@
       "id": 8
     },
     {
-      "title": "sdvsadf",
-      "totalTimeInMinutes": "4444",
+      "title": "e22e",
+      "totalTimeInMinutes": "",
       "id": 9
+    },
+    {
+      "title": "sdcv",
+      "totalTimeInMinutes": "3",
+      "id": 10
     }
   ]
 }

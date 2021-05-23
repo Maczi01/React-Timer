@@ -21,6 +21,7 @@ const AxiosTimeboxesAPI = {
         return replacedTimebox;
     },
     removeTimebox: async function(timeboxToRemove) {
+
         if (!timeboxToRemove.id) {
             throw new Error("Timebox has to have an id to be updated");
         }
